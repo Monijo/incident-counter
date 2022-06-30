@@ -1,17 +1,22 @@
 import React from 'react';
+import {useCounter} from "./useCounter";
+import SetCounter from "./SetCounter";
 
 function Counter(props) {
     const incident= "incident";
-    const counter = 0;
+    const {count, increment, decrement, set} = useCounter()
+
+
     return (
         <div>
             <h1>Days since last {incident}</h1>
-            <p>{counter}</p>
+            <p>{count}</p>
             <section>
-                <button>Increment</button>
-                <button>Reset</button>
-                <button>Decrement</button>
+                <button onClick={()=>increment()}>Increment</button>
+                <button onClick={()=>set(0)}>Reset</button>
+                <button onClick={()=>decrement()}>Decrement</button>
             </section>
+            <SetCounter/>
         </div>
     );
 }
